@@ -1,7 +1,7 @@
 #!/bin/sh
 
-REPO=token-airdrop.git
-USER=softsun-cz
+REPO=AnimalsTown.git
+USER=AnimalsTown
 PASS=`cat ./.secret_git`
 
 if [ "$#" -eq 0 ]; then
