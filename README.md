@@ -26,3 +26,26 @@ You can also build web page manualy without deploying new smart contracts using:
 cd ./web
 ./build.sh
 ```
+
+You can proxy pass test version to port 80 using Nginx:
+```console
+server {
+    listen 80;
+    listen [::]:80;
+    root /data/www/test.animals.town;
+    index index.html index.htm;
+    server_name test.animals.town;
+    access_log /data/log/nginx/test.animals.town.access.log;
+    error_log /data/log/nginx/test.animals.town.error.log;
+
+    location / {
+        proxy_pass http://127.0.0.1:4001;
+        #try_files $uri /index.html;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
+```
+
